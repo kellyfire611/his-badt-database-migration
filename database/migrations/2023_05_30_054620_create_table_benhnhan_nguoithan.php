@@ -1,0 +1,68 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+
+class CreateTableBenhNhanNguoiThan extends Migration
+{
+  const TABLE_NAME = 'benhnhan_nguoithan';
+
+  /**
+   * Run the migrations.
+   *
+   * @return void
+   */
+  public function up()
+  {
+    Schema::create(static::TABLE_NAME, function (Blueprint $table) {
+      // Primary key
+      $table->bigIncrements('benhnhan_nguoithan_id');
+
+      // Foreign
+      $table->unsignedBigInteger('benhnhan_id');
+      $table->foreign('benhnhan_id')->references('benhnhan_id')->on('benhnhan');
+      $table->unsignedBigInteger('dm_tinhthanh_id')->nullable();
+      $table->foreign('dm_tinhthanh_id')->references('dm_tinhthanh_id')->on('dm_tinhthanh');
+      $table->unsignedBigInteger('dm_quanhuyen_id')->nullable();
+      $table->foreign('dm_quanhuyen_id')->references('dm_quanhuyen_id')->on('dm_quanhuyen');
+      $table->unsignedBigInteger('dm_xaphuong_id')->nullable();
+      $table->foreign('dm_xaphuong_id')->references('dm_xaphuong_id')->on('dm_xaphuong');
+
+      // Properties
+      $table->mediumText('benhnhan_nguoithan_loaiquanhe')->nullable();
+      $table->mediumText('benhnhan_nguoithan_hoten')->nullable();
+      $table->string('benhnhan_nguoithan_diachi')->nullable();
+      $table->string('benhnhan_nguoithan_sdt')->nullable();
+      $table->mediumText('benhnhan_nguoithan_nghenghiep')->nullable();
+      $table->mediumText('benhnhan_nguoithan_noilamviec')->nullable();
+      $table->mediumText('benhnhan_nguoithan_hokhau_thuongtru')->nullable();
+      $table->mediumText('benhnhan_nguoithan_cmnd_so')->nullable();
+      $table->mediumText('benhnhan_nguoithan_cmnd_ngaycap')->nullable();
+      $table->mediumText('benhnhan_nguoithan_cmnd_noicap')->nullable();
+      
+      // Log
+      $table->unsignedBigInteger('benhnhan_nguoithan_old_id');
+      $table->timestamp('log_ngay_tao')->comment('Thời điểm tạo')->useCurrent();
+      $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->useCurrent();
+      $table->timestamp('log_ngay_xoa')->comment('Thời điểm xóa')->nullable();
+      $table->unsignedBigInteger('log_nguoi_tao_id')->comment('Người tạo')->nullable();
+      $table->unsignedBigInteger('log_nguoi_capnhat_id')->comment('Người cập nhật')->nullable();
+      $table->unsignedBigInteger('log_nguoi_xoa_id')->comment('Người xóa')->nullable();
+      $table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
+      $table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
+      $table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
+    });
+  }
+
+  /**
+   * Reverse the migrations.
+   *
+   * @return void
+   */
+  public function down()
+  {
+    Schema::dropIfExists(static::TABLE_NAME);
+  }
+}
