@@ -22,22 +22,23 @@ class CreateTableBenhNhan extends Migration
 
       // Foreign
       $table->unsignedBigInteger('dm_quocgia_id');
-      $table->foreign('dm_quocgia_id')->references('dm_quocgia_id')->on('dm_quocgia');
+      //$table->foreign('dm_quocgia_id')->references('dm_quocgia_id')->on('dm_quocgia');
       $table->unsignedBigInteger('dm_dantoc_id');
-      $table->foreign('dm_dantoc_id')->references('dm_dantoc_id')->on('dm_dantoc');
+      //$table->foreign('dm_dantoc_id')->references('dm_dantoc_id')->on('dm_dantoc');
       $table->unsignedBigInteger('dm_tinhthanh_id');
-      $table->foreign('dm_tinhthanh_id')->references('dm_tinhthanh_id')->on('dm_tinhthanh');
+      //$table->foreign('dm_tinhthanh_id')->references('dm_tinhthanh_id')->on('dm_tinhthanh');
       $table->unsignedBigInteger('dm_quanhuyen_id')->nullable();
-      $table->foreign('dm_quanhuyen_id')->references('dm_quanhuyen_id')->on('dm_quanhuyen');
+      //$table->foreign('dm_quanhuyen_id')->references('dm_quanhuyen_id')->on('dm_quanhuyen');
       $table->unsignedBigInteger('dm_xaphuong_id')->nullable();
-      $table->foreign('dm_xaphuong_id')->references('dm_xaphuong_id')->on('dm_xaphuong');
+      //$table->foreign('dm_xaphuong_id')->references('dm_xaphuong_id')->on('dm_xaphuong');
 
       // Properties
-      $table->string('benhnhan_ma')->unique();
+      $table->string('benhnhan_ma');
       $table->mediumText('benhnhan_hoten')->nullable();
-      $table->string('benhnhan_ngaysinh_text')->nullable();;
-      $table->timestamp('benhnhan_ngaysinh')->nullable();;
+      $table->string('benhnhan_ngaysinh_text')->nullable();
+      $table->timestamp('benhnhan_ngaysinh')->nullable();
       $table->integer('benhnhan_gioitinh')->nullable()->comment('#0: Nam; #1: Nữ');
+      $table->string('benhnhan_diachi')->nullable();
       $table->string('benhnhan_sdt')->nullable();
       $table->string('benhnhan_trinhdovanhoa')->nullable();
       $table->string('benhnhan_nghenghiep')->nullable();
@@ -47,6 +48,8 @@ class CreateTableBenhNhan extends Migration
       $table->mediumText('benhnhan_cmnd_so')->nullable();
       $table->mediumText('benhnhan_cmnd_ngaycap')->nullable();
       $table->mediumText('benhnhan_cmnd_noicap')->nullable();
+      $table->mediumText('benhnhan_nghenghiep_bhxh')->nullable();
+      $table->mediumText('benhnhan_sohochieu')->nullable();
 
       // Log
       $table->unsignedBigInteger('benhnhan_old_id');
@@ -56,9 +59,9 @@ class CreateTableBenhNhan extends Migration
       $table->unsignedBigInteger('log_nguoi_tao_id')->comment('Người tạo')->nullable();
       $table->unsignedBigInteger('log_nguoi_capnhat_id')->comment('Người cập nhật')->nullable();
       $table->unsignedBigInteger('log_nguoi_xoa_id')->comment('Người xóa')->nullable();
-      $table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
-      $table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
-      $table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
     });
   }
 

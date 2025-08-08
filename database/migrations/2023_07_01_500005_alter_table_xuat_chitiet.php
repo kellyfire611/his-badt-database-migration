@@ -18,7 +18,7 @@ class AlterTableXuatChiTiet extends Migration
   {
     Schema::table(static::TABLE_NAME, function (Blueprint $table) {
       $table->unsignedBigInteger('nhap_chitiet_id')->nullable()->after('dm_sanpham_id');
-      $table->foreign('nhap_chitiet_id')->references('nhap_chitiet_id')->on('nhap_chitiet');
+      //$table->foreign('nhap_chitiet_id')->references('nhap_chitiet_id')->on('nhap_chitiet');
     });
   }
 
@@ -29,9 +29,9 @@ class AlterTableXuatChiTiet extends Migration
    */
   public function down()
   {
-    Schema::table(static::TABLE_NAME, function (Blueprint $table) {
-      $table->dropColumn('nhap_chitiet_id');
-      $table->dropForeign('nhap_chitiet_id');
-    });
+    // Schema::table(static::TABLE_NAME, function (Blueprint $table) {
+    //   $table->dropForeign(['nhap_chitiet_id']);
+    //   $table->dropColumn('nhap_chitiet_id');
+    // });
   }
 }

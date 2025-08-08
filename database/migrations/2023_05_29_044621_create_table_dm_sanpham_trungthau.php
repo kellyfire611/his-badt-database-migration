@@ -22,11 +22,11 @@ class CreateTableDmSanphamTrungthau extends Migration
 
       // Foreign
       $table->unsignedBigInteger('dm_thau_id');
-      $table->foreign('dm_thau_id')->references('dm_thau_id')->on('dm_thau');
+      //$table->foreign('dm_thau_id')->references('dm_thau_id')->on('dm_thau');
       $table->unsignedBigInteger('dm_sanpham_id');
-      $table->foreign('dm_sanpham_id')->references('dm_sanpham_id')->on('dm_sanpham');
+      //$table->foreign('dm_sanpham_id')->references('dm_sanpham_id')->on('dm_sanpham');
       $table->unsignedBigInteger('dm_nhacungcap_id')->nullable();
-      $table->foreign('dm_nhacungcap_id')->references('dm_nhacungcap_id')->on('dm_nhacungcap');
+      //$table->foreign('dm_nhacungcap_id')->references('dm_nhacungcap_id')->on('dm_nhacungcap');
 
       // Properties
       $table->decimal('sanpham_trungthau_soluong', 18, 4);
@@ -44,9 +44,9 @@ class CreateTableDmSanphamTrungthau extends Migration
       $table->unsignedBigInteger('log_nguoi_tao_id')->comment('Người tạo')->nullable();
       $table->unsignedBigInteger('log_nguoi_capnhat_id')->comment('Người cập nhật')->nullable();
       $table->unsignedBigInteger('log_nguoi_xoa_id')->comment('Người xóa')->nullable();
-      $table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
-      $table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
-      $table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
     });
   }
 

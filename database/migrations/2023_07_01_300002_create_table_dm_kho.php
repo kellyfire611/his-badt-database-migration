@@ -22,7 +22,7 @@ class CreateTableDmKho extends Migration
 
       // Foreign
       $table->unsignedBigInteger('dm_kho_loai_id');
-      $table->foreign('dm_kho_loai_id')->references('dm_kho_loai_id')->on('dm_kho_loai');
+      //$table->foreign('dm_kho_loai_id')->references('dm_kho_loai_id')->on('dm_kho_loai');
 
       // Properties
       $table->string('kho_ma')->unique();
@@ -38,9 +38,9 @@ class CreateTableDmKho extends Migration
       $table->unsignedBigInteger('log_nguoi_tao_id')->comment('Người tạo')->nullable();
       $table->unsignedBigInteger('log_nguoi_capnhat_id')->comment('Người cập nhật')->nullable();
       $table->unsignedBigInteger('log_nguoi_xoa_id')->comment('Người xóa')->nullable();
-      $table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
-      $table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
-      $table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
     });
   }
 

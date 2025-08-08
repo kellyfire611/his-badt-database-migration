@@ -22,9 +22,9 @@ class CreateTableNhapChiTiet extends Migration
 
       // Foreign
       $table->unsignedBigInteger('nhap_id');
-      $table->foreign('nhap_id')->references('nhap_id')->on('nhap');
+      //$table->foreign('nhap_id')->references('nhap_id')->on('nhap');
       $table->unsignedBigInteger('dm_sanpham_id');
-      $table->foreign('dm_sanpham_id')->references('dm_sanpham_id')->on('dm_sanpham');
+      //$table->foreign('dm_sanpham_id')->references('dm_sanpham_id')->on('dm_sanpham');
 
       // Properties
       $table->decimal('nhap_chitiet_tylethue', 18, 2);
@@ -47,9 +47,9 @@ class CreateTableNhapChiTiet extends Migration
       $table->unsignedBigInteger('log_nguoi_tao_id')->comment('Người tạo')->nullable();
       $table->unsignedBigInteger('log_nguoi_capnhat_id')->comment('Người cập nhật')->nullable();
       $table->unsignedBigInteger('log_nguoi_xoa_id')->comment('Người xóa')->nullable();
-      $table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
-      $table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
-      $table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
     });
   }
 

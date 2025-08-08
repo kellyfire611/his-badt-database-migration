@@ -22,7 +22,7 @@ class CreateTableDmNhaCungCap extends Migration
 
       // Foreign
       $table->unsignedBigInteger('dm_nganhang_id')->nullable();
-      $table->foreign('dm_nganhang_id')->references('dm_nganhang_id')->on('dm_nganhang');
+      //$table->foreign('dm_nganhang_id')->references('dm_nganhang_id')->on('dm_nganhang');
       
       // Properties
       $table->string('nhacungcap_ma')->unique();
@@ -42,9 +42,9 @@ class CreateTableDmNhaCungCap extends Migration
       $table->unsignedBigInteger('log_nguoi_tao_id')->comment('Người tạo')->nullable();
       $table->unsignedBigInteger('log_nguoi_capnhat_id')->comment('Người cập nhật')->nullable();
       $table->unsignedBigInteger('log_nguoi_xoa_id')->comment('Người xóa')->nullable();
-      $table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
-      $table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
-      $table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
     });
   }
 

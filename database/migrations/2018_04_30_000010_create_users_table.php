@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
 
             // Foreign
             $table->unsignedBigInteger('role_id')->nullable();
-            $table->foreign('role_id')->references('role_id')->on('roles');
+            //$table->foreign('role_id')->references('role_id')->on('roles');
 
             // Properties
             $table->string('name');
@@ -41,9 +41,9 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('log_nguoi_tao_id')->comment('Người tạo')->nullable();
             $table->unsignedBigInteger('log_nguoi_capnhat_id')->comment('Người cập nhật')->nullable();
             $table->unsignedBigInteger('log_nguoi_xoa_id')->comment('Người xóa')->nullable();
-            $table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
-            $table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
-            $table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
+            //$table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
+            //$table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
+            //$table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
         });
     }
 

@@ -23,8 +23,8 @@ class CreateTableDmBenh extends Migration
       // Foreign
       $table->unsignedBigInteger('dm_benh_nhom_id');
       $table->unsignedBigInteger('dm_benh_chuong_nhom_id');
-      $table->foreign('dm_benh_nhom_id')->references('dm_benh_nhom_id')->on('dm_benh_nhom');
-      $table->foreign('dm_benh_chuong_nhom_id')->references('dm_benh_chuong_nhom_id')->on('dm_benh_chuong_nhom');
+      //$table->foreign('dm_benh_nhom_id')->references('dm_benh_nhom_id')->on('dm_benh_nhom');
+      //$table->foreign('dm_benh_chuong_nhom_id')->references('dm_benh_chuong_nhom_id')->on('dm_benh_chuong_nhom');
       
       // Properties
       $table->string('benh_ma')->unique();
@@ -44,9 +44,9 @@ class CreateTableDmBenh extends Migration
       $table->unsignedBigInteger('log_nguoi_tao_id')->comment('Người tạo')->nullable();
       $table->unsignedBigInteger('log_nguoi_capnhat_id')->comment('Người cập nhật')->nullable();
       $table->unsignedBigInteger('log_nguoi_xoa_id')->comment('Người xóa')->nullable();
-      $table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
-      $table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
-      $table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
     });
   }
 

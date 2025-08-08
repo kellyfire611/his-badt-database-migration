@@ -22,15 +22,15 @@ class CreateTableNhapTuNguon extends Migration
 
       // Foreign
       $table->unsignedBigInteger('nhap_id');
-      $table->foreign('nhap_id')->references('nhap_id')->on('nhap');
+      //$table->foreign('nhap_id')->references('nhap_id')->on('nhap');
       $table->unsignedBigInteger('dm_nhacungcap_id')->nullable();
-      $table->foreign('dm_nhacungcap_id')->references('dm_nhacungcap_id')->on('dm_nhacungcap');
+      //$table->foreign('dm_nhacungcap_id')->references('dm_nhacungcap_id')->on('dm_nhacungcap');
       $table->unsignedBigInteger('dm_nhasanxuat_id')->nullable();
-      $table->foreign('dm_nhasanxuat_id')->references('dm_nhasanxuat_id')->on('dm_nhasanxuat');
+      //$table->foreign('dm_nhasanxuat_id')->references('dm_nhasanxuat_id')->on('dm_nhasanxuat');
       $table->unsignedBigInteger('dm_nguoncungcap_id')->nullable();
-      $table->foreign('dm_nguoncungcap_id')->references('dm_nguoncungcap_id')->on('dm_nguoncungcap');
+      //$table->foreign('dm_nguoncungcap_id')->references('dm_nguoncungcap_id')->on('dm_nguoncungcap');
       $table->unsignedBigInteger('dm_chuongtrinhcungcap_id')->nullable();
-      $table->foreign('dm_chuongtrinhcungcap_id')->references('dm_chuongtrinhcungcap_id')->on('dm_chuongtrinhcungcap');
+      //$table->foreign('dm_chuongtrinhcungcap_id')->references('dm_chuongtrinhcungcap_id')->on('dm_chuongtrinhcungcap');
 
       // Properties
       $table->string('nhap_tu_nguon_ten');
@@ -43,9 +43,9 @@ class CreateTableNhapTuNguon extends Migration
       $table->unsignedBigInteger('log_nguoi_tao_id')->comment('Người tạo')->nullable();
       $table->unsignedBigInteger('log_nguoi_capnhat_id')->comment('Người cập nhật')->nullable();
       $table->unsignedBigInteger('log_nguoi_xoa_id')->comment('Người xóa')->nullable();
-      $table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
-      $table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
-      $table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
     });
   }
 

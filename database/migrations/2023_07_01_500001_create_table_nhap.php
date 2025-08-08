@@ -22,15 +22,15 @@ class CreateTableNhap extends Migration
 
       // Foreign
       $table->unsignedBigInteger('dm_soketoan_id');
-      $table->foreign('dm_soketoan_id')->references('dm_soketoan_id')->on('dm_soketoan');
+      //$table->foreign('dm_soketoan_id')->references('dm_soketoan_id')->on('dm_soketoan');
       $table->unsignedBigInteger('dm_nhapxuat_loai_id');
-      $table->foreign('dm_nhapxuat_loai_id')->references('dm_nhapxuat_loai_id')->on('dm_nhapxuat_loai');
+      //$table->foreign('dm_nhapxuat_loai_id')->references('dm_nhapxuat_loai_id')->on('dm_nhapxuat_loai');
       $table->unsignedBigInteger('nhap_vao_kho_id');
-      $table->foreign('nhap_vao_kho_id')->references('dm_kho_id')->on('dm_kho');
+      //$table->foreign('nhap_vao_kho_id')->references('dm_kho_id')->on('dm_kho');
       $table->unsignedBigInteger('nhap_tu_kho_id')->nullable();
-      $table->foreign('nhap_tu_kho_id')->references('dm_kho_id')->on('dm_kho');
+      //$table->foreign('nhap_tu_kho_id')->references('dm_kho_id')->on('dm_kho');
       $table->unsignedBigInteger('xuat_id')->nullable();
-      $table->foreign('xuat_id')->references('xuat_id')->on('xuat');
+      //$table->foreign('xuat_id')->references('xuat_id')->on('xuat');
 
       // Properties
       $table->string('nhap_ma');
@@ -52,15 +52,15 @@ class CreateTableNhap extends Migration
       $table->unsignedBigInteger('log_nguoi_tao_id')->comment('Người tạo')->nullable();
       $table->unsignedBigInteger('log_nguoi_capnhat_id')->comment('Người cập nhật')->nullable();
       $table->unsignedBigInteger('log_nguoi_xoa_id')->comment('Người xóa')->nullable();
-      $table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
-      $table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
-      $table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
 
       // Log in phiếu
       $table->integer('log_lan_in')->nullable();
       $table->timestamp('log_ngay_in')->comment('Thời điểm in')->nullable();
       $table->unsignedBigInteger('log_nguoi_in_id')->comment('Người in')->nullable();
-      $table->foreign('log_nguoi_in_id')->references('user_id')->on('users');
+      //$table->foreign('log_nguoi_in_id')->references('user_id')->on('users');
     });
   }
 
