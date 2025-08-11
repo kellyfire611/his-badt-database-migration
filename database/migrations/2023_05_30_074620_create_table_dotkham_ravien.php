@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class CreateTableDotkham extends Migration
 {
-  const TABLE_NAME = 'dotkham';
+  const TABLE_NAME = 'dotkham_noigioithieu';
 
   /**
    * Run the migrations.
@@ -22,15 +22,14 @@ class CreateTableDotkham extends Migration
 
       // Foreign
       $table->unsignedBigInteger('benhnhan_id');
-      $table->unsignedBigInteger('giayto_id');
+      $table->unsignedBigInteger('dotkham_id');
 
       // Properties
-      $table->string('dotkham_ma');
-      $table->string('dotkham_trangthai', 250)->comment('Trạng thái của đợt khám: #dangcho: Đang chờ; #danggia: Đang giải quyết; #hoanthanh: Hoàn thành; #huy: Hủy bỏ');
-      $table->string('dotkham_hinhthuc_dieutri', 250)->comment('Hình thức điều trị: #kham: Khám; #dieutri: Điều trị; #khambenh: Khám bệnh; #khambenh_dangky: Khám bệnh đăng ký; #khambenh_dangky_kham: Khám bệnh đăng ký khám');
-      $table->boolean('dotkham_latraituyen')->comment('Là trái tuyến?');
-      $table->timestamp('dotkham_ngayravien')->comment('Ngày ra viện?');
-      $table->decimal('dotkham_phantramcungchitra', 20, 2)->comment('Phần trăm cùng chi trả bảo hiểm y tế');
+      $table->string('dotkham_noigioithieu_e')->comment('Nơi giới thiệu|#1: Cơ quan y tế; #2: Tự đến; #3: Khác')->nullable();
+      $table->unsignedBigInteger('dotkham_noigioithieu_donvi')->comment('Đơn vị giới thiệu đến (Cơ sở y tế trong BHXH)')->nullable();
+      $table->unsignedBigInteger('dotkham_noigioithieu_benh')->comment('Mã bệnh ICD10')->nullable();
+      $table->mediumText('dotkham_noigioithieu_benh_diengiai')->comment('Diễn giải bệnh')->nullable();
+      
       
       // Log
       $table->unsignedBigInteger('dotkham_old_id');

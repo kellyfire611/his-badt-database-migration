@@ -20,11 +20,22 @@ class CreateTableDotkhamChandoan extends Migration
       // Primary key
       $table->bigIncrements('dotkham_chandoan_id');
 
-      // Properties
-      $table->string('chandoan_loai')->comment('Chẩn đoán chính, phụ 1, phụ 2, vào viện, ra viện, lâm sàng, ...');
-      $table->string('chandoan_benh_id');
-      $table->string('chandoan_benh_diengiai');
+      // Foreign
+      $table->unsignedBigInteger('benhnhan_id');
+      $table->unsignedBigInteger('dotkham_id');
+      $table->unsignedBigInteger('chuyenkhoa_id');
 
+      // Properties
+      $table->string('chandoan_hinhthuc')->comment('Hình thức nhập chẩn đoán|#vaovien: vào viện; #ravien: ra viện; #noichuyenden: nơi chuyển đến; #vaokhoa: vào khoa; #rakhoa: ra khoa');
+      $table->string('chandoan_noinhap')->comment('Nơi nhập chẩn đoán|#benhvien: benhvien; ');
+      $table->string('chandoan_loai')->comment('Loại chẩn đoán|#chinh: chẩn đoán chính; #phu: chẩn đoán phụ');
+      $table->unsignedBigInteger('chandoan_benh_id')->comment('Mã bệnh ICD10');
+      $table->mediumText('chandoan_benh_diengiai')->comment('Diễn giải bệnh')->nullable();
+      $table->integer('stt')->default(0)->comment('Số thứ tự của chẩn đoán trong danh sách chẩn đoán');
+
+      // Chẩn đoán nơi chuyển đến: chính, phụ
+      // Chẩn đoán vào viện: chính, phụ
+      // Chẩn đoán ra viện: chính, phụ
       // Log
       $table->timestamp('log_ngay_tao')->comment('Thời điểm tạo')->useCurrent();
       $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->useCurrent();

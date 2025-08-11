@@ -20,9 +20,16 @@ class CreateTableBenhnhanGiayto extends Migration
       // Primary key
       $table->bigIncrements('giayto_id');
 
+      // Foreign
+      $table->unsignedBigInteger('benhnhan_id');
+
       // Properties
       $table->string('giayto_so');
-      $table->integer('giayto_stt')->nullable();
+      $table->string('giayto_loai', 250)->comment('Loại giấy tờ: #bhyt: Bảo hiểm Y tế; #chungsinh: Giấy chứng sinh; #khaisinh: Giấy khai sinh');
+      $table->timestamp('giayto_ngayhieuluc')->comment('Ngày hiệu lực');
+      $table->timestamp('giayto_ngayhethan')->nullable()->comment('Ngày hết hạn');
+      $table->integer('giayto_noicap_id')->nullable()->comment('Nơi cấp (Danh mục Bệnh viện BHXH)');
+      $table->boolean('giayto_dangsudung')->comment('Đang sử dụng?');
 
       // Log
       $table->unsignedBigInteger('giayto_old_id');

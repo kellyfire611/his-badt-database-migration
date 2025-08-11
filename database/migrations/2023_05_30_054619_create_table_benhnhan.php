@@ -21,6 +21,8 @@ class CreateTableBenhNhan extends Migration
       $table->bigIncrements('benhnhan_id');
 
       // Foreign
+      $table->unsignedBigInteger('benhnhan_parent_id')->comment('ID của bệnh nhân cha mẹ (nếu có)')->nullable();
+
       $table->unsignedBigInteger('dm_quocgia_id');
       //$table->foreign('dm_quocgia_id')->references('dm_quocgia_id')->on('dm_quocgia');
       $table->unsignedBigInteger('dm_dantoc_id');
