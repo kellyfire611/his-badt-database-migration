@@ -5,9 +5,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateTableDotkhamSinhhieu extends Migration
+class CreateTableDotkhamGiamDinhBhyt extends Migration
 {
-  const TABLE_NAME = 'dotkham_sinhhieu';
+  const TABLE_NAME = 'dotkham_giamdinh_bhyt';
 
   /**
    * Run the migrations.
@@ -18,13 +18,17 @@ class CreateTableDotkhamSinhhieu extends Migration
   {
     Schema::create(static::TABLE_NAME, function (Blueprint $table) {
       // Primary key
-      $table->bigIncrements('dotkham_sinhhieu_id');
+      $table->bigIncrements('dotkham_giamdinh_bhyt_id');
+
+      // Foreign
+      $table->unsignedBigInteger('benhnhan_id');
+      $table->unsignedBigInteger('dotkham_id');
 
       // Properties
-      $table->string('sinhhieu_ma')->unique();
-
+      $table->timestamp('dotkham_giamdinh_bhyt_checkin_thoigian')->comment('Thời gian checkin');
+      
       // Log
-      $table->unsignedBigInteger('sinhhieu_old_id');
+      $table->unsignedBigInteger('dotkham_old_id');
       $table->timestamp('log_ngay_tao')->comment('Thời điểm tạo')->useCurrent();
       $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->useCurrent();
       $table->timestamp('log_ngay_xoa')->comment('Thời điểm xóa')->nullable();

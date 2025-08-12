@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateTableDotkham extends Migration
+class CreateTableDotkhamHanhChinh extends Migration
 {
   const TABLE_NAME = 'dotkham_hanhchinh';
 
@@ -18,7 +18,7 @@ class CreateTableDotkham extends Migration
   {
     Schema::create(static::TABLE_NAME, function (Blueprint $table) {
       // Primary key
-      $table->bigIncrements('dotkham_id');
+      $table->bigIncrements('dotkham_hanhchinh_id');
 
       // Foreign
       $table->unsignedBigInteger('benhnhan_id');

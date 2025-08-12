@@ -5,9 +5,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateTableDotkhamChandoan extends Migration
+class CreateTableBangKe extends Migration
 {
-  const TABLE_NAME = 'dotkham_chandoan';
+  const TABLE_NAME = 'bangke';
 
   /**
    * Run the migrations.
@@ -18,25 +18,36 @@ class CreateTableDotkhamChandoan extends Migration
   {
     Schema::create(static::TABLE_NAME, function (Blueprint $table) {
       // Primary key
-      $table->bigIncrements('dotkham_chandoan_id');
+      $table->bigIncrements('bangke_id');
 
       // Foreign
       $table->unsignedBigInteger('benhnhan_id');
       $table->unsignedBigInteger('dotkham_id');
       $table->unsignedBigInteger('chuyenkhoa_id');
+      $table->unsignedBigInteger('chuyenkhoa_phongkham_id');
 
       // Properties
-      $table->string('chandoan_hinhthuc')->comment('Hình thức nhập chẩn đoán|#vaovien: vào viện; #ravien: ra viện; #noichuyenden: nơi chuyển đến; #vaokhoa: vào khoa; #rakhoa: ra khoa; #tuvong: tử vong; #khamnghiem: khám nghiệm; #vaophong_kham: vào phòng khám; #sinhcon: sinh con');
-      $table->string('chandoan_noinhap')->comment('Nơi nhập chẩn đoán|#benhvien: benhvien; ');
-      $table->string('chandoan_loai')->comment('Loại chẩn đoán|#chinh: chẩn đoán chính; #phu: chẩn đoán phụ');
-      $table->unsignedBigInteger('chandoan_benh_id')->comment('Mã bệnh ICD10');
-      $table->mediumText('chandoan_benh_diengiai')->comment('Diễn giải bệnh')->nullable();
-      $table->integer('stt')->default(0)->comment('Số thứ tự của chẩn đoán trong danh sách chẩn đoán');
+      $table->string('bangke_sophieu')->comment('Số phiếu bảng kê');
+      $table->mediumText('bangke_loai')->comment('Loại bảng kê|#trong_ngay: trong ngày; #ra_vien: ra viện');
+      $table->timestamp('bangke_thoigianlap')->comment('Thời gian lập bảng kê');
+      $table->mediumText('bangke_ghichu')->comment('Ghi chú bảng kê');
+      $table->unsignedBigInteger('bangke_nguoilap_id')->comment('Người lập bảng kê');
+      $table->unsignedBigInteger('phieuthuphi_id');
+      $table->boolean('bangke_thuocvtyt_daphat')->comment('Đã phát thuốc vật tư y tế?');
+      $table->boolean('bangke_hoantra_daxacnhan')->comment('Đã xác nhận hoàn trả?');
+      $table->unsignedBigInteger('bangke_chidinh_bacsi_id')->comment('Bác sĩ chỉ định bảng kê');
+      
 
-      // Chẩn đoán nơi chuyển đến: chính, phụ
-      // Chẩn đoán vào viện: chính, phụ
-      // Chẩn đoán ra viện: chính, phụ
+      $table->unsignedBigInteger('phieutonghop_id')->comment('ID Phiếu tổng hợp');
+      $table->unsignedBigInteger('bangke_chuongtrinh_hotro_id')->comment('ID Chương trình hỗ trợ');
+      $table->unsignedBigInteger('xuatkho_id')->comment('ID xuất kho');
+
+      $table->timestamp('bangke_ngay_thuchien_ylenh')->comment('Ngày thực hiện y lệnh');
+      $table->string('bangke_mucdo_chidinh')->comment('Mức độ chỉ định');
+
+      
       // Log
+      $table->unsignedBigInteger('bangke_old_id');
       $table->timestamp('log_ngay_tao')->comment('Thời điểm tạo')->useCurrent();
       $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->useCurrent();
       $table->timestamp('log_ngay_xoa')->comment('Thời điểm xóa')->nullable();

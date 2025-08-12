@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateTableDotkham extends Migration
+class CreateTableDotkhamVaoVien extends Migration
 {
   const TABLE_NAME = 'dotkham_vaovien';
 
@@ -18,20 +18,22 @@ class CreateTableDotkham extends Migration
   {
     Schema::create(static::TABLE_NAME, function (Blueprint $table) {
       // Primary key
-      $table->bigIncrements('dotkham_id');
+      $table->bigIncrements('dotkham_vaovien_id');
 
       // Foreign
       $table->unsignedBigInteger('benhnhan_id');
       $table->unsignedBigInteger('dotkham_id');
 
       // Properties
-      $table->timestamp('dotkham_ngayvaovien')->comment('Ngày vào viện?');
+      $table->timestamp('dotkham_vaovien_ngay')->comment('Ngày vào viện?');
       $table->mediumText('dotkham_vaovien_lydo')->comment('Lý do vào viện')->nullable();
-      $table->string('dotkham_hinhthuc_vaovien_e')->comment('Hình thức vào viện|#1: Vào từ cấp cứu; #2: Vào từ khoa khám; #3: Vào từ khoa điều trị')->nullable();
+      $table->string('dotkham_vaovien_hinhthuc_e')->comment('Hình thức vào viện|#1: Vào từ cấp cứu; #2: Vào từ khoa khám; #3: Vào từ khoa điều trị')->nullable();
       $table->boolean('dotkham_la_capcuu')->default(false)->comment('Là cấp cứu?');
 
       $table->string('dotkham_noichuyenden_e')->comment('Nơi giới thiệu|#1: Cơ quan y tế; #2: Tự đến; #3: Khác')->nullable();
       $table->unsignedBigInteger('dotkham_noichuyenden_donvi')->comment('Đơn vị giới thiệu đến (Cơ sở y tế trong BHXH)')->nullable();
+      $table->timestamp('dotkham_noichuyenden_vaovien_ngay')->comment('Ngày vào viện của nơi chuyển đến?');
+      $table->timestamp('dotkham_noichuyenden_ravien_ngay')->comment('Ngày ra viện của nơi chuyển đến?');
       
       
       // Log

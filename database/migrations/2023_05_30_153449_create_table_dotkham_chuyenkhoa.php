@@ -18,12 +18,26 @@ class CreateTableDotkhamChuyenkhoa extends Migration
   {
     Schema::create(static::TABLE_NAME, function (Blueprint $table) {
       // Primary key
-      $table->bigIncrements('chuyenkhoa_id');
+      $table->bigIncrements('dotkham_chuyenkhoa_id');
 
+      // Foreign
+      $table->unsignedBigInteger('benhnhan_id');
+      $table->unsignedBigInteger('dotkham_id');
+      
       // Properties
-      $table->string('chuyenkhoa_ma')->unique();
-      $table->string('dm_donvi_cap1')->comment('Đơn vị cấp 1 là: Khoa');
-      $table->string('dm_donvi_cap2')->comment('Đơn vị cấp 2 là: Phòng');
+      $table->unsignedBigInteger('vaokhoa_khoa_id')->commnent('Khoa vào');
+      $table->timestamp('vaokhoa_ngay')->comment('Ngày vào khoa');
+      $table->unsignedBigInteger('vaokhoa_buong_id')->comment('Vào khoa buồng');
+      $table->string('vaokhoa_giuong')->comment('Vào khoa giường');
+
+      $table->unsignedBigInteger('rakhoa_khoa_id')->commnent('Khoa ra');
+      $table->timestamp('rakhoa_ngay')->comment('Ngày ra khoa');
+
+      $table->integer('dieutri_songay')->comment('Số ngày điều trị');
+      $table->boolean('lakhoa_vaovien')->comment('Là khoa vào viện');
+      $table->unsignedBigInteger('truongkhoa_id')->comment('Trưởng khoa');
+      $table->mediumText('giuong_dachuyen')->comment('Danh sách giường đã chuyển');
+
       
       // Log
       $table->unsignedBigInteger('chuyenkhoa_old_id');

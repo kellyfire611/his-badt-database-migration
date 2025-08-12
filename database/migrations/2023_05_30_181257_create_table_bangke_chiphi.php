@@ -5,9 +5,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateTableDotkhamChandoan extends Migration
+class CreateTableBangkeChiphi extends Migration
 {
-  const TABLE_NAME = 'dotkham_chandoan';
+  const TABLE_NAME = 'bangke_chiphi';
 
   /**
    * Run the migrations.
@@ -18,24 +18,39 @@ class CreateTableDotkhamChandoan extends Migration
   {
     Schema::create(static::TABLE_NAME, function (Blueprint $table) {
       // Primary key
-      $table->bigIncrements('dotkham_chandoan_id');
+      $table->bigIncrements('bangke_chiphi_id');
 
       // Foreign
-      $table->unsignedBigInteger('benhnhan_id');
-      $table->unsignedBigInteger('dotkham_id');
+      $table->unsignedBigInteger('bangke_id');
       $table->unsignedBigInteger('chuyenkhoa_id');
+      $table->unsignedBigInteger('dm_chiphi_id');
+      // //$table->foreign('bangke_id')->references('bangke_id')->on('bangke');
+      // //$table->foreign('chuyenkhoa_id')->references('chuyenkhoa_id')->on('bangke_chuyenkhoa');
+      // //$table->foreign('dm_chiphi_id')->references('dm_chiphi_id')->on('dm_chiphi');
 
       // Properties
-      $table->string('chandoan_hinhthuc')->comment('Hình thức nhập chẩn đoán|#vaovien: vào viện; #ravien: ra viện; #noichuyenden: nơi chuyển đến; #vaokhoa: vào khoa; #rakhoa: ra khoa; #tuvong: tử vong; #khamnghiem: khám nghiệm; #vaophong_kham: vào phòng khám; #sinhcon: sinh con');
-      $table->string('chandoan_noinhap')->comment('Nơi nhập chẩn đoán|#benhvien: benhvien; ');
-      $table->string('chandoan_loai')->comment('Loại chẩn đoán|#chinh: chẩn đoán chính; #phu: chẩn đoán phụ');
-      $table->unsignedBigInteger('chandoan_benh_id')->comment('Mã bệnh ICD10');
-      $table->mediumText('chandoan_benh_diengiai')->comment('Diễn giải bệnh')->nullable();
-      $table->integer('stt')->default(0)->comment('Số thứ tự của chẩn đoán trong danh sách chẩn đoán');
+      $table->string('bangke_chiphi_sophieu')->comment('Số phiếu bảng kê chi phí');
+      $table->integer('cls_loai_e')->comment('Loại cận lâm sàng|#1');
 
-      // Chẩn đoán nơi chuyển đến: chính, phụ
-      // Chẩn đoán vào viện: chính, phụ
-      // Chẩn đoán ra viện: chính, phụ
+      $table->string('donvitinh');
+      $table->decimal('soluong');
+      $table->decimal('thuphi_dongia');
+      $table->decimal('baohiem_dongia');
+      $table->decimal('baohiem_dongia_thanhtoan');
+
+      $table->decimal('tyle_thanhtoan_bv');
+      $table->decimal('thanhtien_bv');
+      $table->decimal('tyle_thanhtoan_bh');
+      $table->decimal('thanhtien_bh');
+
+      $table->decimal('nguonthanhtoan_quy_bhxh');
+      $table->decimal('nguonthanhtoan_nguoibenh_cungchitra');
+      $table->decimal('nguonthanhtoan_khac');
+      $table->decimal('nguonthanhtoan_nguoibenh_tutra');
+      $table->boolean('tinhphi');
+
+      
+
       // Log
       $table->timestamp('log_ngay_tao')->comment('Thời điểm tạo')->useCurrent();
       $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->useCurrent();

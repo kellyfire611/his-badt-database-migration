@@ -5,9 +5,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateTableDotkhamChiphi extends Migration
+class CreateTableDotkhamThuongTich extends Migration
 {
-  const TABLE_NAME = 'dotkham_chiphi';
+  const TABLE_NAME = 'dotkham_thuongtich';
 
   /**
    * Run the migrations.
@@ -18,32 +18,21 @@ class CreateTableDotkhamChiphi extends Migration
   {
     Schema::create(static::TABLE_NAME, function (Blueprint $table) {
       // Primary key
-      $table->bigIncrements('dotkham_chiphi_id');
+      $table->bigIncrements('dotkham_thuongtich_id');
 
       // Foreign
+      $table->unsignedBigInteger('benhnhan_id');
       $table->unsignedBigInteger('dotkham_id');
-      $table->unsignedBigInteger('chuyenkhoa_id');
-      $table->unsignedBigInteger('dm_chiphi_id');
-      // //$table->foreign('dotkham_id')->references('dotkham_id')->on('dotkham');
-      // //$table->foreign('chuyenkhoa_id')->references('chuyenkhoa_id')->on('dotkham_chuyenkhoa');
-      // //$table->foreign('dm_chiphi_id')->references('dm_chiphi_id')->on('dm_chiphi');
+      $table->unsignedBigInteger('dotkham_thuongtich_bacsi_id')->comment('Bác sĩ điều trị');
 
       // Properties
-      $table->string('donvitinh');
-      $table->decimal('soluong');
-      $table->decimal('dongia_bv');
-      $table->decimal('dongia_bh');
-      $table->decimal('tyle_thanhtoan_bv');
-      $table->decimal('thanhtien_bv');
-      $table->decimal('tyle_thanhtoan_bh');
-      $table->decimal('thanhtien_bh');
-      $table->decimal('nguonthanhtoan_quy_bhxh');
-      $table->decimal('nguonthanhtoan_nguoibenh_cungchitra');
-      $table->decimal('nguonthanhtoan_khac');
-      $table->decimal('nguonthanhtoan_nguoibenh_tutra');
-      $table->boolean('tinhphi');
-
+      $table->string('dotkham_thuongtich_ychung_so')->comment('Số y chứng');
+      $table->timestamp('dotkham_thuongtich_ychung_ngaycap')->comment('Ngày cấp y chứng');
+      $table->mediumText('dotkham_thuongtich_vaovien')->comment('Thương tích vào viện');
+      $table->mediumText('dotkham_thuongtich_ravien')->comment('Thương tích ra viện');
+      
       // Log
+      $table->unsignedBigInteger('dotkham_old_id');
       $table->timestamp('log_ngay_tao')->comment('Thời điểm tạo')->useCurrent();
       $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->useCurrent();
       $table->timestamp('log_ngay_xoa')->comment('Thời điểm xóa')->nullable();
