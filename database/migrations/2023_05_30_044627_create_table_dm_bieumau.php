@@ -5,9 +5,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateTableDmKho extends Migration
+class CreateTableDmBieuMau extends Migration
 {
-  const TABLE_NAME = 'dm_kho';
+  const TABLE_NAME = 'dm_bieumau';
 
   /**
    * Run the migrations.
@@ -18,22 +18,20 @@ class CreateTableDmKho extends Migration
   {
     Schema::create(static::TABLE_NAME, function (Blueprint $table) {
       // Primary key
-      $table->bigIncrements('dm_kho_id');
+      $table->bigIncrements('dm_bieumau_id');
 
       // Foreign
-      $table->unsignedBigInteger('dm_kho_loai_id');
-      //$table->foreign('dm_kho_loai_id')->references('dm_kho_loai_id')->on('dm_kho_loai');
 
       // Properties
-      $table->string('kho_ma')->unique();
-      $table->string('kho_ten');
-      $table->string('kho_diengiai')->nullable();
-      $table->integer('kho_stt')->nullable();
-
+      $table->string('bieumau_ma', 250)->unique();
+      $table->mediumText('bieumau_ten');
+      $table->mediumText('bieumau_diengiai')->nullable();
+      $table->mediumText('bieumau_url')->nullable();
+      $table->mediumText('bieumau_component')->nullable();
+      
       // Log
-      $table->unsignedBigInteger('kho_old_id');
       $table->timestamp('log_ngay_tao')->comment('Thời điểm tạo')->useCurrent();
-      $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->useCurrent();
+      $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->nullable();
       $table->timestamp('log_ngay_xoa')->comment('Thời điểm xóa')->nullable();
       $table->unsignedBigInteger('log_nguoi_tao_id')->comment('Người tạo')->nullable();
       $table->unsignedBigInteger('log_nguoi_capnhat_id')->comment('Người cập nhật')->nullable();

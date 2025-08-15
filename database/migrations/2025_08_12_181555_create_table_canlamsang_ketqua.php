@@ -5,9 +5,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateTableDmSanphamTrungthau extends Migration
+class CreateTableCanLamSangKetQua extends Migration
 {
-  const TABLE_NAME = 'dm_sanpham_trungthau';
+  const TABLE_NAME = 'canlamsang_ketqua';
 
   /**
    * Run the migrations.
@@ -18,26 +18,18 @@ class CreateTableDmSanphamTrungthau extends Migration
   {
     Schema::create(static::TABLE_NAME, function (Blueprint $table) {
       // Primary key
-      $table->bigIncrements('dm_sanpham_trungthau_id');
+      $table->bigIncrements('canlamsang_ketqua_id');
 
       // Foreign
-      $table->unsignedBigInteger('dm_thau_id');
-      //$table->foreign('dm_thau_id')->references('dm_thau_id')->on('dm_thau');
-      $table->unsignedBigInteger('dm_sanpham_id');
-      //$table->foreign('dm_sanpham_id')->references('dm_sanpham_id')->on('dm_sanpham');
-      $table->unsignedBigInteger('dm_nhacungcap_id')->nullable();
-      //$table->foreign('dm_nhacungcap_id')->references('dm_nhacungcap_id')->on('dm_nhacungcap');
+      $table->unsignedBigInteger('benhnhan_id');
+      $table->unsignedBigInteger('dotkham_id');
+      $table->unsignedBigInteger('chuyenkhoa_id');
+      $table->unsignedBigInteger('bangke_chiphi_id');
 
       // Properties
-      $table->decimal('sanpham_trungthau_soluong', 18, 4);
-      $table->decimal('sanpham_trungthau_dongia', 18, 4);
-      $table->decimal('sanpham_trungthau_phamvinhapkho', 18, 4)->nullable();
-      $table->mediumText('sanpham_trungthau_so_quyetdinh')->nullable();
-      $table->longText('sanpham_trungthau_diengiai')->nullable();
-      $table->integer('sanpham_trungthau_stt')->nullable();
 
+     
       // Log
-      $table->unsignedBigInteger('sanpham_trungthau_old_id');
       $table->timestamp('log_ngay_tao')->comment('Thời điểm tạo')->useCurrent();
       $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->nullable();
       $table->timestamp('log_ngay_xoa')->comment('Thời điểm xóa')->nullable();

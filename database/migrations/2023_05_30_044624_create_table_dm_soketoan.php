@@ -5,9 +5,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateTableDmKhoLoai extends Migration
+class CreateTableDmSoketoan extends Migration
 {
-  const TABLE_NAME = 'dm_kho_loai';
+  const TABLE_NAME = 'dm_soketoan';
 
   /**
    * Run the migrations.
@@ -18,18 +18,22 @@ class CreateTableDmKhoLoai extends Migration
   {
     Schema::create(static::TABLE_NAME, function (Blueprint $table) {
       // Primary key
-      $table->bigIncrements('dm_kho_loai_id');
+      $table->bigIncrements('dm_soketoan_id');
 
       // Properties
-      $table->string('kho_loai_ma')->unique();
-      $table->string('kho_loai_ten');
-      $table->string('kho_loai_diengiai')->nullable();
-      $table->integer('kho_loai_stt')->nullable();
+      $table->string('soketoan_ma')->unique();
+      $table->string('soketoan_ten');
+      $table->string('soketoan_diengiai')->nullable();
+      $table->timestamp('soketoan_ngay_batdau');
+      $table->timestamp('soketoan_ngay_ketthuc')->nullable();
+      $table->boolean('soketoan_khoaso');
+      $table->timestamp('soketoan_ngay_khoaso')->nullable();
+      $table->integer('soketoan_stt')->nullable();
 
       // Log
-      $table->unsignedBigInteger('kho_loai_old_id');
+      $table->unsignedBigInteger('soketoan_old_id');
       $table->timestamp('log_ngay_tao')->comment('Thời điểm tạo')->useCurrent();
-      $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->useCurrent();
+      $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->nullable();
       $table->timestamp('log_ngay_xoa')->comment('Thời điểm xóa')->nullable();
       $table->unsignedBigInteger('log_nguoi_tao_id')->comment('Người tạo')->nullable();
       $table->unsignedBigInteger('log_nguoi_capnhat_id')->comment('Người cập nhật')->nullable();

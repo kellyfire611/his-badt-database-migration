@@ -5,9 +5,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateTableDmSanphamTrungthau extends Migration
+class CreateTableBangKeSanpham extends Migration
 {
-  const TABLE_NAME = 'dm_sanpham_trungthau';
+  const TABLE_NAME = 'bangke_sanpham';
 
   /**
    * Run the migrations.
@@ -18,26 +18,33 @@ class CreateTableDmSanphamTrungthau extends Migration
   {
     Schema::create(static::TABLE_NAME, function (Blueprint $table) {
       // Primary key
-      $table->bigIncrements('dm_sanpham_trungthau_id');
+      $table->bigIncrements('bangke_sanpham_id');
 
       // Foreign
-      $table->unsignedBigInteger('dm_thau_id');
-      //$table->foreign('dm_thau_id')->references('dm_thau_id')->on('dm_thau');
-      $table->unsignedBigInteger('dm_sanpham_id');
-      //$table->foreign('dm_sanpham_id')->references('dm_sanpham_id')->on('dm_sanpham');
-      $table->unsignedBigInteger('dm_nhacungcap_id')->nullable();
-      //$table->foreign('dm_nhacungcap_id')->references('dm_nhacungcap_id')->on('dm_nhacungcap');
-
+      $table->unsignedBigInteger('bangke_id');
+      $table->unsignedBigInteger('chuyenkhoa_id');
+      $table->unsignedBigInteger('sanpham_id');
+      // //$table->foreign('bangke_id')->references('bangke_id')->on('bangke');
+      // //$table->foreign('chuyenkhoa_id')->references('chuyenkhoa_id')->on('bangke_chuyenkhoa');
+      // //$table->foreign('sanpham_id')->references('sanpham_id')->on('dm_sanpham');
+      
       // Properties
-      $table->decimal('sanpham_trungthau_soluong', 18, 4);
-      $table->decimal('sanpham_trungthau_dongia', 18, 4);
-      $table->decimal('sanpham_trungthau_phamvinhapkho', 18, 4)->nullable();
-      $table->mediumText('sanpham_trungthau_so_quyetdinh')->nullable();
-      $table->longText('sanpham_trungthau_diengiai')->nullable();
-      $table->integer('sanpham_trungthau_stt')->nullable();
+      $table->text('bangke_sanpham_cachdung');
+      $table->string('donvitinh');
+      $table->decimal('soluong');
+      $table->decimal('dongia_bv');
+      $table->decimal('dongia_bh');
+      $table->decimal('tyle_thanhtoan_bv');
+      $table->decimal('thanhtien_bv');
+      $table->decimal('tyle_thanhtoan_bh');
+      $table->decimal('thanhtien_bh');
+      $table->decimal('nguonthanhtoan_quy_bhxh');
+      $table->decimal('nguonthanhtoan_nguoibenh_cungchitra');
+      $table->decimal('nguonthanhtoan_khac');
+      $table->decimal('nguonthanhtoan_nguoibenh_tutra');
+      $table->boolean('tinhphi');
 
       // Log
-      $table->unsignedBigInteger('sanpham_trungthau_old_id');
       $table->timestamp('log_ngay_tao')->comment('Thời điểm tạo')->useCurrent();
       $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->nullable();
       $table->timestamp('log_ngay_xoa')->comment('Thời điểm xóa')->nullable();

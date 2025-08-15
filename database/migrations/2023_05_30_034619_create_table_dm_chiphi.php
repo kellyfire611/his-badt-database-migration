@@ -19,16 +19,24 @@ class CreateTableDmChiPhi extends Migration
     Schema::create(static::TABLE_NAME, function (Blueprint $table) {
       // Primary key
       $table->bigIncrements('dm_chiphi_id');
+
+      // Foreign
+      $table->unsignedBigInteger('dm_chiphi_nhom_id');
       
       // Properties
       $table->string('chiphi_ma')->unique();
       $table->string('chiphi_ten');
+      $table->integer('chiphi_donvitinh')->nullable();
       $table->integer('chiphi_stt')->nullable();
+      $table->integer('chiphi_pttt_loai_e')->comment('Loại PTTT|#1: Loại 1; #2: Loại 2; #3: Loại 3; #4: Đặc biệt')->nullable();
+      $table->string('chiphi_stt_qd_duyetgia', 250)->comment('Số thứ tự quyết định duyệt giá')->nullable();
+      $table->string('chiphi_stt_dmkt_byt', 250)->comment('Số thứ tự danh mục kỹ thuật BYT')->nullable();
+      $table->mediumText('chiphi_diengiai')->comment('Diễn giải')->nullable();
 
       // Log
       $table->unsignedBigInteger('chiphi_old_id');
       $table->timestamp('log_ngay_tao')->comment('Thời điểm tạo')->useCurrent();
-      $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->useCurrent();
+      $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->nullable();
       $table->timestamp('log_ngay_xoa')->comment('Thời điểm xóa')->nullable();
       $table->unsignedBigInteger('log_nguoi_tao_id')->comment('Người tạo')->nullable();
       $table->unsignedBigInteger('log_nguoi_capnhat_id')->comment('Người cập nhật')->nullable();

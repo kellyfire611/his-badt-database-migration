@@ -30,18 +30,15 @@ class CreateTableBangkeChiphi extends Migration
 
       // Properties
       $table->string('bangke_chiphi_sophieu')->comment('Số phiếu bảng kê chi phí');
-      $table->integer('cls_loai_e')->comment('Loại cận lâm sàng|#1');
+      $table->integer('canlamsang_loai_e')->comment('Loại cận lâm sàng|#1');
+      $table->string('canlamsang_sophieu')->comment('Số phiếu cận lâm sàng');
 
-      $table->string('donvitinh');
       $table->decimal('soluong');
       $table->decimal('thuphi_dongia');
+
       $table->decimal('baohiem_dongia');
       $table->decimal('baohiem_dongia_thanhtoan');
-
-      $table->decimal('tyle_thanhtoan_bv');
-      $table->decimal('thanhtien_bv');
-      $table->decimal('tyle_thanhtoan_bh');
-      $table->decimal('thanhtien_bh');
+      $table->decimal('baohiem_tyle_thanhtoan');
 
       $table->decimal('nguonthanhtoan_quy_bhxh');
       $table->decimal('nguonthanhtoan_nguoibenh_cungchitra');
@@ -49,11 +46,21 @@ class CreateTableBangkeChiphi extends Migration
       $table->decimal('nguonthanhtoan_nguoibenh_tutra');
       $table->boolean('tinhphi');
 
+      $table->boolean('la_pttt')->comment('Là phẫu thuật thủ thuật?');
+      $table->boolean('la_cls')->comment('Là phẫu thuật thủ thuật?');
       
+      $table->string('donvitinh')->comment('Đơn vị tính');
+      $table->mediumText('chiphi_ten')->comment('Tên chi phí');
+      $table->mediumText('ghichu')->comment('Ghi chú');
+
+
+      $table->unsignedBigInteger('phieuthuphi_id');
+      $table->unsignedBigInteger('canlamsang_chucnang_loai_id')->comment('Loại chức năng cận lâm sàng');
+      $table->unsignedBigInteger('canlamsang_chucnang_nhom_id')->comment('Nhóm chức năng cận lâm sàng');
 
       // Log
       $table->timestamp('log_ngay_tao')->comment('Thời điểm tạo')->useCurrent();
-      $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->useCurrent();
+      $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->nullable();
       $table->timestamp('log_ngay_xoa')->comment('Thời điểm xóa')->nullable();
       $table->unsignedBigInteger('log_nguoi_tao_id')->comment('Người tạo')->nullable();
       $table->unsignedBigInteger('log_nguoi_capnhat_id')->comment('Người cập nhật')->nullable();

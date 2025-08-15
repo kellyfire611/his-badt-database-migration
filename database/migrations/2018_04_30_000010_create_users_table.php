@@ -35,7 +35,7 @@ class CreateUsersTable extends Migration
 
             // Log
             $table->timestamp('log_ngay_tao')->comment('Thời điểm tạo')->useCurrent();
-            $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->useCurrent();
+            $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->nullable();
             $table->timestamp('log_ngay_xoa')->comment('Thời điểm xóa')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('log_nguoi_tao_id')->comment('Người tạo')->nullable();
