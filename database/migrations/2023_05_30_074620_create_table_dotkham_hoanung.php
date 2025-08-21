@@ -27,7 +27,9 @@ class CreateTableDotkhamHoanUng extends Migration
 
       // Properties
       $table->string('dotkham_hoanung_sophieu')->comment('Số phiếu hoàn ứng');
+      $table->datetime('dotkham_hoanung_ngay')->comment('Ngày hoàn ứng');
       $table->mediumText('dotkham_hoanung_nguoinhan')->comment('Người nhận');
+      $table->mediumText('dotkham_hoanung_nguoinhan_sdt')->comment('Số điện thoại người nhận tiền');
       $table->mediumText('dotkham_hoanung_lydo')->comment('Lý do');
       $table->decimal('dotkham_hoanung_sotien', 20, 4)->comment('Số tiền hoàn ứng');
       
@@ -43,6 +45,7 @@ class CreateTableDotkhamHoanUng extends Migration
       //$table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
       //$table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
       //$table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
+      $table->uuid('guid')->default(DB::raw('gen_random_uuid()'));
     });
   }
 

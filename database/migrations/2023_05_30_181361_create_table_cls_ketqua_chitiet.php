@@ -5,9 +5,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateTableDmNhaSanXuat extends Migration
+class CreateTableClsKetQuaChiTiet extends Migration
 {
-  const TABLE_NAME = 'dm_nhasanxuat';
+  const TABLE_NAME = 'cls_ketqua_chitiet';
 
   /**
    * Run the migrations.
@@ -18,20 +18,25 @@ class CreateTableDmNhaSanXuat extends Migration
   {
     Schema::create(static::TABLE_NAME, function (Blueprint $table) {
       // Primary key
-      $table->bigIncrements('dm_nhasanxuat_id');
+      $table->bigIncrements('cls_ketqua_chitiet_id');
 
+      // Foreign
+      $table->unsignedBigInteger('cls_ketqua_id');
+      $table->unsignedBigInteger('dm_cls_noidung_id')->nullable();
+      
       // Properties
-      $table->string('nhasanxuat_ma')->unique();
-      $table->mediumText('nhasanxuat_ten');
-      $table->mediumText('nhasanxuat_diachi')->nullable();
-      $table->mediumText('nhasanxuat_sdt')->nullable();
-      $table->mediumText('nhasanxuat_sotaikhoan')->nullable();
-      $table->mediumText('nhasanxuat_masothue')->nullable();
-      $table->longText('nhasanxuat_diengiai')->nullable();
-      $table->integer('nhasanxuat_stt')->nullable();
+      $table->mediumText('cls_ketqua_chitiet_tennoidung')->nullable()->comment('Tên nội dung CLS');
+      $table->mediumText('cls_ketqua_chitiet_1')->nullable()->comment('Kết quả CLS 1');
+      $table->mediumText('cls_ketqua_chitiet_2')->nullable()->comment('Kết quả CLS 2');
+      $table->mediumText('cls_ketqua_chitiet_3')->nullable()->comment('Kết quả CLS 3');
+      $table->mediumText('cls_ketqua_chitiet_ketluan')->nullable()->comment('Kết luận');
+      $table->mediumText('cls_ketqua_chitiet_denghi')->nullable()->comment('Đề nghị');
+
+      $table->unsignedBigInteger('cls_chucnang_loai_id')->nullable()->comment('Loại chức năng cận lâm sàng');
+      $table->unsignedBigInteger('cls_chucnang_nhom_id')->nullable()->comment('Nhóm chức năng cận lâm sàng');
 
       // Log
-      $table->unsignedBigInteger('nhasanxuat_old_id');
+      $table->unsignedBigInteger('cls_ketqua_chitiet_old_id');
       $table->timestamp('log_ngay_tao')->comment('Thời điểm tạo')->useCurrent();
       $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->nullable();
       $table->timestamp('log_ngay_xoa')->comment('Thời điểm xóa')->nullable();

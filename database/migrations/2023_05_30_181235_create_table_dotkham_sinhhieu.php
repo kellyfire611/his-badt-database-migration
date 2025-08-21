@@ -24,6 +24,7 @@ class CreateTableDotkhamSinhhieu extends Migration
       $table->string('sinhhieu_ma')->unique();
 
       // Log
+      $table->unsignedBigInteger('dotkham_old_id');
       $table->unsignedBigInteger('sinhhieu_old_id');
       $table->timestamp('log_ngay_tao')->comment('Thời điểm tạo')->useCurrent();
       $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->nullable();
@@ -34,6 +35,7 @@ class CreateTableDotkhamSinhhieu extends Migration
       //$table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
       //$table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
       //$table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
+      $table->uuid('guid')->default(DB::raw('gen_random_uuid()'));
     });
   }
 

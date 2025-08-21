@@ -37,21 +37,7 @@ class CreateTableBenhNhan extends Migration
       // Properties
       $table->string('benhnhan_ma');
       $table->mediumText('benhnhan_hoten')->nullable();
-      $table->string('benhnhan_ngaysinh_text')->nullable();
-      $table->timestamp('benhnhan_ngaysinh')->nullable();
-      $table->integer('benhnhan_gioitinh')->nullable()->comment('#0: Nam; #1: Nữ');
-      $table->string('benhnhan_diachi')->nullable();
-      $table->string('benhnhan_sdt')->nullable();
-      $table->string('benhnhan_trinhdovanhoa')->nullable();
-      $table->string('benhnhan_nghenghiep')->nullable();
-      $table->string('benhnhan_noilamviec')->nullable();
-      $table->string('benhnhan_tiensubenh')->nullable();
-      $table->mediumText('benhnhan_hokhau_thuongtru')->nullable();
-      $table->mediumText('benhnhan_cmnd_so')->nullable();
-      $table->mediumText('benhnhan_cmnd_ngaycap')->nullable();
-      $table->mediumText('benhnhan_cmnd_noicap')->nullable();
-      $table->mediumText('benhnhan_nghenghiep_bhxh')->nullable();
-      $table->mediumText('benhnhan_sohochieu')->nullable();
+      $table->string('account_guid', 36);
 
       // Log
       $table->unsignedBigInteger('benhnhan_old_id');
@@ -64,6 +50,7 @@ class CreateTableBenhNhan extends Migration
       //$table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
       //$table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
       //$table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
+      $table->uuid('guid')->default(DB::raw('gen_random_uuid()'));
     });
   }
 

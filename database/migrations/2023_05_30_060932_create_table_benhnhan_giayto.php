@@ -25,8 +25,8 @@ class CreateTableBenhnhanGiayto extends Migration
 
       // Properties
       $table->string('giayto_so');
-      $table->string('giayto_loai', 250)->comment('Loại giấy tờ: #bhyt: Bảo hiểm Y tế; #chungsinh: Giấy chứng sinh; #khaisinh: Giấy khai sinh');
-      $table->timestamp('giayto_ngayhieuluc')->comment('Ngày hiệu lực');
+      $table->string('giayto_loai', 250)->nullable()->comment('Loại giấy tờ: #bhyt: Bảo hiểm Y tế; #chungsinh: Giấy chứng sinh; #khaisinh: Giấy khai sinh');
+      $table->timestamp('giayto_ngayhieuluc')->nullable()->comment('Ngày hiệu lực');
       $table->timestamp('giayto_ngayhethan')->nullable()->comment('Ngày hết hạn');
       $table->integer('giayto_noicap_id')->nullable()->comment('Nơi cấp (Danh mục Bệnh viện BHXH)');
       $table->boolean('giayto_dangsudung')->comment('Đang sử dụng?');
@@ -42,6 +42,7 @@ class CreateTableBenhnhanGiayto extends Migration
       //$table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
       //$table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
       //$table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
+      $table->uuid('guid')->default(DB::raw('gen_random_uuid()'));
     });
   }
 

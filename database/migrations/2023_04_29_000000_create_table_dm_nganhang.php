@@ -39,6 +39,7 @@ class CreateTableDmNganHang extends Migration
       //$table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
       //$table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
       //$table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
+      $table->uuid('guid')->default(DB::raw('gen_random_uuid()'));
     });
   }
 

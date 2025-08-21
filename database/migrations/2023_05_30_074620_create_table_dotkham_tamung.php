@@ -5,9 +5,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateTableCanLamSangKetQua extends Migration
+class CreateTableDotkhamTamUng extends Migration
 {
-  const TABLE_NAME = 'canlamsang_ketqua';
+  const TABLE_NAME = 'dotkham_tamung';
 
   /**
    * Run the migrations.
@@ -18,18 +18,24 @@ class CreateTableCanLamSangKetQua extends Migration
   {
     Schema::create(static::TABLE_NAME, function (Blueprint $table) {
       // Primary key
-      $table->bigIncrements('canlamsang_ketqua_id');
+      $table->bigIncrements('dotkham_tamung_id');
 
       // Foreign
       $table->unsignedBigInteger('benhnhan_id');
       $table->unsignedBigInteger('dotkham_id');
-      $table->unsignedBigInteger('chuyenkhoa_id');
-      $table->unsignedBigInteger('bangke_chiphi_id');
+      $table->unsignedBigInteger('dotkham_tamung_nguoithu')->comment('Người thu tạm ứng');
 
       // Properties
-
-     
+      $table->string('dotkham_tamung_sophieu')->comment('Số phiếu tạm ứng');
+      $table->datetime('dotkham_tamung_ngay')->comment('Ngày nộp tạm ứng');
+      $table->mediumText('dotkham_tamung_nguoinop')->comment('Người nộp tiền');
+      $table->mediumText('dotkham_tamung_nguoinop_sdt')->comment('Số điện thoại người nộp tiền');
+      $table->mediumText('dotkham_tamung_lydo')->comment('Lý do');
+      $table->decimal('dotkham_tamung_sotien', 20, 4)->comment('Số tiền tạm ứng');
+      
+      
       // Log
+      $table->unsignedBigInteger('dotkham_old_id');
       $table->timestamp('log_ngay_tao')->comment('Thời điểm tạo')->useCurrent();
       $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->nullable();
       $table->timestamp('log_ngay_xoa')->comment('Thời điểm xóa')->nullable();
@@ -39,6 +45,7 @@ class CreateTableCanLamSangKetQua extends Migration
       //$table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
       //$table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
       //$table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
+      $table->uuid('guid')->default(DB::raw('gen_random_uuid()'));
     });
   }
 

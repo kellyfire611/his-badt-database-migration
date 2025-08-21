@@ -21,30 +21,39 @@ class CreateTableBangKeSanpham extends Migration
       $table->bigIncrements('bangke_sanpham_id');
 
       // Foreign
+      $table->unsignedBigInteger('benhnhan_id');
+      $table->unsignedBigInteger('dotkham_id');
+      $table->unsignedBigInteger('dotkham_chuyenkhoa_id');
+      $table->unsignedBigInteger('dotkham_chuyenkhoa_phongkham_id');
+
       $table->unsignedBigInteger('bangke_id');
-      $table->unsignedBigInteger('chuyenkhoa_id');
-      $table->unsignedBigInteger('sanpham_id');
+      $table->unsignedBigInteger('sanpham_id')->nullable();
+
       // //$table->foreign('bangke_id')->references('bangke_id')->on('bangke');
       // //$table->foreign('chuyenkhoa_id')->references('chuyenkhoa_id')->on('bangke_chuyenkhoa');
       // //$table->foreign('sanpham_id')->references('sanpham_id')->on('dm_sanpham');
       
       // Properties
-      $table->text('bangke_sanpham_cachdung');
-      $table->string('donvitinh');
-      $table->decimal('soluong');
-      $table->decimal('dongia_bv');
-      $table->decimal('dongia_bh');
-      $table->decimal('tyle_thanhtoan_bv');
-      $table->decimal('thanhtien_bv');
-      $table->decimal('tyle_thanhtoan_bh');
-      $table->decimal('thanhtien_bh');
-      $table->decimal('nguonthanhtoan_quy_bhxh');
-      $table->decimal('nguonthanhtoan_nguoibenh_cungchitra');
-      $table->decimal('nguonthanhtoan_khac');
-      $table->decimal('nguonthanhtoan_nguoibenh_tutra');
-      $table->boolean('tinhphi');
+      $table->mediumText('bangke_sanpham_ten')->nullable();
+      $table->text('bangke_sanpham_cachdung')->nullable();
+      $table->string('bangke_sanpham_donvitinh')->nullable();
+      $table->decimal('bangke_sanpham_soluong')->nullable();
+      $table->decimal('bangke_sanpham_thuphi_dongia')->nullable();
+      $table->decimal('bangke_sanpham_thuphi_tyle_thanhtoan')->nullable();
+
+      $table->decimal('bangke_sanpham_baohiem_dongia')->nullable();
+      $table->decimal('bangke_sanpham_baohiem_tyle_thanhtoan')->nullable();
+      
+      $table->decimal('bangke_sanpham_nguonthanhtoan_quy_bhxh')->nullable();
+      $table->decimal('bangke_sanpham_nguonthanhtoan_nguoibenh_cungchitra')->nullable();
+      $table->decimal('bangke_sanpham_nguonthanhtoan_khac')->nullable();
+      $table->decimal('bangke_sanpham_nguonthanhtoan_nguoibenh_tutra')->nullable();
+      $table->boolean('bangke_sanpham_tinhphi')->nullable();
 
       // Log
+      $table->unsignedBigInteger('bangke_sanpham_old_id');
+      $table->unsignedBigInteger('donthuoc_chitiet_old_id');
+
       $table->timestamp('log_ngay_tao')->comment('Thời điểm tạo')->useCurrent();
       $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->nullable();
       $table->timestamp('log_ngay_xoa')->comment('Thời điểm xóa')->nullable();
@@ -54,6 +63,7 @@ class CreateTableBangKeSanpham extends Migration
       //$table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
       //$table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
       //$table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
+      $table->uuid('guid')->default(DB::raw('gen_random_uuid()'));
     });
   }
 

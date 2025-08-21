@@ -5,9 +5,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateTableDmNhaSanXuat extends Migration
+class CreateTableDotkhamJson extends Migration
 {
-  const TABLE_NAME = 'dm_nhasanxuat';
+  const TABLE_NAME = 'dotkham_json';
 
   /**
    * Run the migrations.
@@ -18,20 +18,17 @@ class CreateTableDmNhaSanXuat extends Migration
   {
     Schema::create(static::TABLE_NAME, function (Blueprint $table) {
       // Primary key
-      $table->bigIncrements('dm_nhasanxuat_id');
+      $table->bigIncrements('dotkham_json_id');
+
+      // Foreign
+      $table->unsignedBigInteger('benhnhan_id');
+      $table->unsignedBigInteger('dotkham_id');
 
       // Properties
-      $table->string('nhasanxuat_ma')->unique();
-      $table->mediumText('nhasanxuat_ten');
-      $table->mediumText('nhasanxuat_diachi')->nullable();
-      $table->mediumText('nhasanxuat_sdt')->nullable();
-      $table->mediumText('nhasanxuat_sotaikhoan')->nullable();
-      $table->mediumText('nhasanxuat_masothue')->nullable();
-      $table->longText('nhasanxuat_diengiai')->nullable();
-      $table->integer('nhasanxuat_stt')->nullable();
-
+      $table->longText('dotkham_json_data')->comment('Dữ liệu json');
+      
       // Log
-      $table->unsignedBigInteger('nhasanxuat_old_id');
+      $table->unsignedBigInteger('dotkham_old_id');
       $table->timestamp('log_ngay_tao')->comment('Thời điểm tạo')->useCurrent();
       $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->nullable();
       $table->timestamp('log_ngay_xoa')->comment('Thời điểm xóa')->nullable();

@@ -5,9 +5,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateTableDmNhaSanXuat extends Migration
+class CreateTableDmClsNoiDung extends Migration
 {
-  const TABLE_NAME = 'dm_nhasanxuat';
+  const TABLE_NAME = 'dm_cls_noidung';
 
   /**
    * Run the migrations.
@@ -18,20 +18,23 @@ class CreateTableDmNhaSanXuat extends Migration
   {
     Schema::create(static::TABLE_NAME, function (Blueprint $table) {
       // Primary key
-      $table->bigIncrements('dm_nhasanxuat_id');
+      $table->bigIncrements('dm_cls_noidung_id');
+
+      // Foreign
+      $table->unsignedBigInteger('dm_cls_noidung_nhom_id');
 
       // Properties
-      $table->string('nhasanxuat_ma')->unique();
-      $table->mediumText('nhasanxuat_ten');
-      $table->mediumText('nhasanxuat_diachi')->nullable();
-      $table->mediumText('nhasanxuat_sdt')->nullable();
-      $table->mediumText('nhasanxuat_sotaikhoan')->nullable();
-      $table->mediumText('nhasanxuat_masothue')->nullable();
-      $table->longText('nhasanxuat_diengiai')->nullable();
-      $table->integer('nhasanxuat_stt')->nullable();
-
+      $table->string('cls_noidung_ma', 250)->unique();
+      $table->mediumText('cls_noidung_ten');
+      $table->mediumText('cls_noidung_diengiai')->nullable();
+      $table->string('cls_noidung_phamvi')->comment('Phạm vi thực hiện|#nam: Nam; #nu: Nữ; #tatca: Tất cả')->nullable();
+      $table->integer('cls_noidung_stt')->nullable();
+      $table->mediumText('cls_noidung_giatri_cantren')->nullable();
+      $table->mediumText('cls_noidung_giatri_canduoi')->nullable();
+      $table->mediumText('cls_noidung_giatri_chisobinhthuong')->nullable();
+      $table->mediumText('cls_noidung_giatri_macdinh')->nullable();
+      
       // Log
-      $table->unsignedBigInteger('nhasanxuat_old_id');
       $table->timestamp('log_ngay_tao')->comment('Thời điểm tạo')->useCurrent();
       $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->nullable();
       $table->timestamp('log_ngay_xoa')->comment('Thời điểm xóa')->nullable();

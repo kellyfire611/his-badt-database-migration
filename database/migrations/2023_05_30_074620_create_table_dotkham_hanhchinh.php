@@ -35,12 +35,45 @@ class CreateTableDotkhamHanhChinh extends Migration
       //$table->foreign('dm_xaphuong_id')->references('dm_xaphuong_id')->on('dm_xaphuong');
 
       // Properties
-      $table->mediumText('dotkham_benhnhan_diachi')->nullable();
-      $table->mediumText('dotkham_benhnhan_nghenghiep')->nullable();
-      $table->mediumText('dotkham_benhnhan_noilamviec')->nullable();
+      $table->integer('dotkham_benhnhan_ngaysinh_ngay')->nullable();
+      $table->integer('dotkham_benhnhan_ngaysinh_thang')->nullable();
+      $table->integer('dotkham_benhnhan_ngaysinh_nam')->nullable();
+      $table->string('dotkham_benhnhan_ngaysinh_text')->nullable();
+      $table->integer('dotkham_benhnhan_gioitinh')->nullable()->comment('#0: Nam; #1: Nữ');
+      $table->mediumText('dotkham_benhnhan_diachi_full')->nullable();
+      $table->mediumText('dotkham_benhnhan_diachi_sonha')->nullable();
+      $table->mediumText('dotkham_benhnhan_diachi_thonpho')->nullable();
+      $table->mediumText('dotkham_benhnhan_diachi_xaphuong')->nullable();
+      $table->mediumText('dotkham_benhnhan_diachi_quanhuyen')->nullable();
+      $table->mediumText('dotkham_benhnhan_diachi_tinhthanh')->nullable();
+      $table->unsignedBigInteger('dotkham_benhnhan_diachi_dm_tinhthanh_id')->nullable();
+      $table->unsignedBigInteger('dotkham_benhnhan_diachi_dm_quanhuyen_id')->nullable();
+      $table->unsignedBigInteger('dotkham_benhnhan_diachi_dm_xaphuong_id')->nullable();
+
+      $table->string('dotkham_benhnhan_sdt')->nullable();
+      $table->string('dotkham_benhnhan_trinhdovanhoa')->nullable();
+      $table->string('dotkham_benhnhan_nghenghiep')->nullable();
+      $table->string('dotkham_benhnhan_noilamviec')->nullable();
+      $table->string('dotkham_benhnhan_tiensubenh')->nullable();
+      $table->mediumText('dotkham_benhnhan_hokhau_thuongtru')->nullable();
+      $table->mediumText('dotkham_benhnhan_cmnd_so')->nullable();
+      $table->mediumText('dotkham_benhnhan_cmnd_ngaycap')->nullable();
+      $table->mediumText('dotkham_benhnhan_cmnd_noicap')->nullable();
+      $table->mediumText('dotkham_benhnhan_nghenghiep_bhxh')->nullable();
+      $table->mediumText('dotkham_benhnhan_sohochieu')->nullable();
+
       $table->mediumText('dotkham_benhnhan_nguoithan_loaiquanhe')->nullable();
       $table->mediumText('dotkham_benhnhan_nguoithan_hoten')->nullable();
-      $table->mediumText('dotkham_benhnhan_nguoithan_diachi')->nullable();
+      $table->mediumText('dotkham_benhnhan_nguoithan_diachi_full')->nullable();
+      $table->mediumText('dotkham_benhnhan_nguoithan_diachi_sonha')->nullable();
+      $table->mediumText('dotkham_benhnhan_nguoithan_diachi_thonpho')->nullable();
+      $table->mediumText('dotkham_benhnhan_nguoithan_diachi_xaphuong')->nullable();
+      $table->mediumText('dotkham_benhnhan_nguoithan_diachi_quanhuyen')->nullable();
+      $table->mediumText('dotkham_benhnhan_nguoithan_diachi_tinhthanh')->nullable();
+      $table->unsignedBigInteger('dotkham_benhnhan_nguoithan_diachi_dm_tinhthanh_id')->nullable();
+      $table->unsignedBigInteger('dotkham_benhnhan_nguoithan_diachi_dm_quanhuyen_id')->nullable();
+      $table->unsignedBigInteger('dotkham_benhnhan_nguoithan_diachi_dm_xaphuong_id')->nullable();
+
       $table->string('dotkham_benhnhan_nguoithan_sdt', 500)->nullable();
       $table->mediumText('dotkham_benhnhan_nguoithan_nghenghiep')->nullable();
       $table->mediumText('dotkham_benhnhan_nguoithan_noilamviec')->nullable();
@@ -61,6 +94,7 @@ class CreateTableDotkhamHanhChinh extends Migration
       //$table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
       //$table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
       //$table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
+      $table->uuid('guid')->default(DB::raw('gen_random_uuid()'));
     });
   }
 

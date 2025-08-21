@@ -57,6 +57,7 @@ class CreateTableXuat extends Migration
       $table->timestamp('log_ngay_in')->comment('Thời điểm in')->nullable();
       $table->unsignedBigInteger('log_nguoi_in_id')->comment('Người in')->nullable();
       //$table->foreign('log_nguoi_in_id')->references('user_id')->on('users');
+      $table->uuid('guid')->default(DB::raw('gen_random_uuid()'));
     });
   }
 

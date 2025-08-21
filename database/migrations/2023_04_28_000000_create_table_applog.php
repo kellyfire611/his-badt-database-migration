@@ -29,7 +29,7 @@ class CreateTableAppLog extends Migration
       $table->string('applog_action')->nullable();
       $table->longText('applog_old_value')->nullable();
       $table->longText('applog_new_value')->nullable();
-      $table->uuid('guild')->default(DB::raw('gen_random_uuid()'));
+      $table->uuid('guid')->default(DB::raw('gen_random_uuid()'));
 
       // Log
       $table->timestamp('log_ngay_tao')->comment('Thời điểm tạo')->useCurrent();

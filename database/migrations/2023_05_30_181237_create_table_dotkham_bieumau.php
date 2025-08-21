@@ -136,9 +136,11 @@ class CreateTableDotkhamBieuMau extends Migration
       Vị trí ký, của ai thì ký người đó, người khác không được xoá.
       */
 
+      $table->json('dotkham_bieumau_data');
       $table->json('dotkham_bieumau_metadata');
 
       // Log
+      $table->unsignedBigInteger('dotkham_old_id');
       $table->timestamp('log_ngay_tao')->comment('Thời điểm tạo')->useCurrent();
       $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->nullable();
       $table->timestamp('log_ngay_xoa')->comment('Thời điểm xóa')->nullable();
@@ -148,6 +150,7 @@ class CreateTableDotkhamBieuMau extends Migration
       //$table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
       //$table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
       //$table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
+      $table->uuid('guid')->default(DB::raw('gen_random_uuid()'));
     });
   }
 
