@@ -5,9 +5,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateTableDotkhamBieuMau extends Migration
+class CreateTableDotkhamBieuMauChuKy extends Migration
 {
-  const TABLE_NAME = 'dotkham_bieumau';
+  const TABLE_NAME = 'dotkham_bieumau_chuky';
 
   /**
    * Run the migrations.
@@ -18,13 +18,10 @@ class CreateTableDotkhamBieuMau extends Migration
   {
     Schema::create(static::TABLE_NAME, function (Blueprint $table) {
       // Primary key
-      $table->bigIncrements('dotkham_bieumau_id');
+      $table->bigIncrements('dotkham_bieumau_chuky_id');
 
       // Foreign
-      $table->unsignedBigInteger('benhnhan_id');
-      $table->unsignedBigInteger('dotkham_id');
-      $table->unsignedBigInteger('chuyenkhoa_id');
-      $table->unsignedBigInteger('bieumau_id');
+      $table->unsignedBigInteger('dotkham_bieumau_id');
 
       // Properties
       /*
@@ -136,9 +133,17 @@ class CreateTableDotkhamBieuMau extends Migration
       Vị trí ký, của ai thì ký người đó, người khác không được xoá.
       */
 
-      $table->longText('dotkham_bieumau_json_file')->nullable()->comment('Đường dẫn đến json file');
-      $table->longText('dotkham_bieumau_pdf_file')->nullable()->comment('Chữ ký số PDF file');
-      $table->text('dotkham_bieumau_ma')->nullable()->comment('Mã phiếu đợt khám');
+      $table->string('dotkham_bieumau_guid', 36)->default(DB::raw('gen_random_uuid()'));
+      
+      $table->longText('dotkham_bieumau_chuky_vitri_key')->nullable()->comment('Vị trí ký');
+      $table->longText('dotkham_bieumau_chuky_vitri_name')->nullable()->comment('Tên vị trí ký');
+      $table->longText('dotkham_bieumau_chuky_diadiem')->nullable()->comment('Địa điểm ký');
+      $table->timestamp('dotkham_bieumau_chuky_ngay')->nullable()->comment('Ngày ký');
+      $table->string('dotkham_bieumau_chuky_nguoiky_username', 500)->nullable()->comment('Người ký');
+      $table->longText('dotkham_bieumau_chuky_nguoiky_hoten')->nullable()->comment('Người ký họ tên');
+      $table->longText('dotkham_bieumau_chuky_nguoiky_chucvu')->nullable()->comment('Người ký chức vụ');
+      $table->longText('dotkham_bieumau_chuky_nguoiky_chucdanh')->nullable()->comment('Người ký chức danh');
+      $table->longText('dotkham_bieumau_chuky_dientu')->nullable()->comment('Chữ ký điện tử');
 
       // Log
       $table->unsignedBigInteger('dotkham_old_id');

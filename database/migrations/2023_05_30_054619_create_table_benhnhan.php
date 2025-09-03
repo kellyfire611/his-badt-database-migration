@@ -37,7 +37,7 @@ class CreateTableBenhNhan extends Migration
       // Properties
       $table->string('benhnhan_ma');
       $table->mediumText('benhnhan_hoten')->nullable();
-      $table->string('account_guid', 36);
+      $table->string('account_guid', 36)->nullable();
 
       // Log
       $table->unsignedBigInteger('benhnhan_old_id');
@@ -50,7 +50,7 @@ class CreateTableBenhNhan extends Migration
       //$table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
       //$table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
       //$table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
-      $table->uuid('guid')->default(DB::raw('gen_random_uuid()'));
+      $table->string('guid', 36)->default(DB::raw('gen_random_uuid()'));
     });
   }
 

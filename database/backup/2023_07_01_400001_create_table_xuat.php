@@ -1,0 +1,73 @@
+<?php
+
+// use Illuminate\Database\Migrations\Migration;
+// use Illuminate\Database\Schema\Blueprint;
+// use Illuminate\Support\Facades\Schema;
+// use Illuminate\Support\Facades\DB;
+
+// class CreateTableXuat extends Migration
+// {
+//   const TABLE_NAME = 'xuat';
+
+//   /**
+//    * Run the migrations.
+//    *
+//    * @return void
+//    */
+//   public function up()
+//   {
+//     Schema::create(static::TABLE_NAME, function (Blueprint $table) {
+//       // Primary key
+//       $table->bigIncrements('xuat_id');
+
+//       // Foreign
+//       $table->unsignedBigInteger('dm_soketoan_id');
+//       //$table->foreign('dm_soketoan_id')->references('dm_soketoan_id')->on('dm_soketoan');
+//       $table->unsignedBigInteger('dm_nhapxuat_loai_id');
+//       //$table->foreign('dm_nhapxuat_loai_id')->references('dm_nhapxuat_loai_id')->on('dm_nhapxuat_loai');
+//       $table->unsignedBigInteger('xuat_tu_kho_id');
+//       //$table->foreign('xuat_tu_kho_id')->references('dm_kho_id')->on('dm_kho');
+//       $table->unsignedBigInteger('xuat_den_kho_id')->nullable();
+//       //$table->foreign('xuat_den_kho_id')->references('dm_kho_id')->on('dm_kho');
+
+//       // Properties
+//       $table->string('xuat_ma');
+//       $table->timestamp('xuat_ngay');
+//       $table->mediumText('xuat_lydo')->nullable();
+//       $table->mediumText('xuat_nguoi_nhan')->nullable();
+//       $table->mediumText('xuat_diengiai')->nullable();
+//       $table->mediumText('xuat_loaiphieulinh')->nullable();
+//       $table->boolean('xuat_xacnhan');
+//       $table->boolean('xuat_dasudung');
+
+//       // Log
+//       $table->unsignedBigInteger('xuat_old_id');
+//       $table->timestamp('log_ngay_tao')->comment('Thời điểm tạo')->useCurrent();
+//       $table->timestamp('log_ngay_capnhat')->comment('Thời điểm cập nhật')->nullable();
+//       $table->timestamp('log_ngay_xoa')->comment('Thời điểm xóa')->nullable();
+//       $table->unsignedBigInteger('log_nguoi_tao_id')->comment('Người tạo')->nullable();
+//       $table->unsignedBigInteger('log_nguoi_capnhat_id')->comment('Người cập nhật')->nullable();
+//       $table->unsignedBigInteger('log_nguoi_xoa_id')->comment('Người xóa')->nullable();
+//       //$table->foreign('log_nguoi_tao_id')->references('user_id')->on('users');
+//       //$table->foreign('log_nguoi_capnhat_id')->references('user_id')->on('users');
+//       //$table->foreign('log_nguoi_xoa_id')->references('user_id')->on('users');
+
+//       // Log in phiếu
+//       $table->integer('log_lan_in')->nullable();
+//       $table->timestamp('log_ngay_in')->comment('Thời điểm in')->nullable();
+//       $table->unsignedBigInteger('log_nguoi_in_id')->comment('Người in')->nullable();
+//       //$table->foreign('log_nguoi_in_id')->references('user_id')->on('users');
+//       $table->string('guid', 36)->default(DB::raw('gen_random_uuid()'));
+//     });
+//   }
+
+//   /**
+//    * Reverse the migrations.
+//    *
+//    * @return void
+//    */
+//   public function down()
+//   {
+//     Schema::dropIfExists(static::TABLE_NAME);
+//   }
+// }

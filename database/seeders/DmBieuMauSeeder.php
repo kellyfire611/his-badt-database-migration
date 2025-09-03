@@ -1531,6 +1531,189 @@ class DmBieuMauSeeder extends Seeder
     array_push($list, $row);
     $id++;
 
+    // --------------- Mẫu BHYT ---------------------
+    $row = [
+      'dm_bieumau_id' => $id,
+      'bieumau_ma' => '01/KBCB',
+      'bieumau_ten' => 'Bảng kê chi phí khám bệnh',
+      'bieumau_diengiai' => '',
+      'bieumau_url' => '',
+      'bieumau_component' => 'BHYT01_01_Page',
+      
+      'log_ngay_tao' => date('Y-m-d H:i:s'),
+      'log_ngay_capnhat' => null,
+      'log_ngay_xoa' => null,
+      'log_nguoi_tao_id' => 1,
+      'log_nguoi_capnhat_id' => null,
+      'log_nguoi_xoa_id' => null,
+    ];
+    array_push($list, $row);
+    $id++;
+
+    // --------------- Mẫu custom ---------------------
+    $row = [
+      'dm_bieumau_id' => $id,
+      'bieumau_ma' => '01/BV3',
+      'bieumau_ten' => 'Giấy ra viện',
+      'bieumau_diengiai' => '',
+      'bieumau_url' => '',
+      'bieumau_component' => 'BV03_01_Page',
+      
+      'log_ngay_tao' => date('Y-m-d H:i:s'),
+      'log_ngay_capnhat' => null,
+      'log_ngay_xoa' => null,
+      'log_nguoi_tao_id' => 1,
+      'log_nguoi_capnhat_id' => null,
+      'log_nguoi_xoa_id' => null,
+    ];
+    array_push($list, $row);
+    $id++;
+
+    $row = [
+      'dm_bieumau_id' => $id,
+      'bieumau_ma' => '02/BV3',
+      'bieumau_ten' => 'Giấy chuyển tuyến',
+      'bieumau_diengiai' => '',
+      'bieumau_url' => '',
+      'bieumau_component' => 'BV03_02_Page',
+      
+      'log_ngay_tao' => date('Y-m-d H:i:s'),
+      'log_ngay_capnhat' => null,
+      'log_ngay_xoa' => null,
+      'log_nguoi_tao_id' => 1,
+      'log_nguoi_capnhat_id' => null,
+      'log_nguoi_xoa_id' => null,
+    ];
+    array_push($list, $row);
+    $id++;
+
+    $row = [
+      'dm_bieumau_id' => $id,
+      'bieumau_ma' => '03/BV3',
+      'bieumau_ten' => 'Giấy hẹn khám lại',
+      'bieumau_diengiai' => '',
+      'bieumau_url' => '',
+      'bieumau_component' => 'BV03_03_Page',
+      
+      'log_ngay_tao' => date('Y-m-d H:i:s'),
+      'log_ngay_capnhat' => null,
+      'log_ngay_xoa' => null,
+      'log_nguoi_tao_id' => 1,
+      'log_nguoi_capnhat_id' => null,
+      'log_nguoi_xoa_id' => null,
+    ];
+    array_push($list, $row);
+    $id++;
+
+    $row = [
+      'dm_bieumau_id' => $id,
+      'bieumau_ma' => '04/BV3',
+      'bieumau_ten' => 'Phiếu chỉ định',
+      'bieumau_diengiai' => '',
+      'bieumau_url' => '',
+      'bieumau_component' => 'BV03_04_Page',
+      
+      'log_ngay_tao' => date('Y-m-d H:i:s'),
+      'log_ngay_capnhat' => null,
+      'log_ngay_xoa' => null,
+      'log_nguoi_tao_id' => 1,
+      'log_nguoi_capnhat_id' => null,
+      'log_nguoi_xoa_id' => null,
+    ];
+    array_push($list, $row);
+    $id++;
+
+    $row = [
+      'dm_bieumau_id' => $id,
+      'bieumau_ma' => '05/BV3',
+      'bieumau_ten' => 'Đơn thuốc',
+      'bieumau_diengiai' => '',
+      'bieumau_url' => '',
+      'bieumau_component' => 'BV03_05_Page',
+      
+      'log_ngay_tao' => date('Y-m-d H:i:s'),
+      'log_ngay_capnhat' => null,
+      'log_ngay_xoa' => null,
+      'log_nguoi_tao_id' => 1,
+      'log_nguoi_capnhat_id' => null,
+      'log_nguoi_xoa_id' => null,
+    ];
+    array_push($list, $row);
+    $id++;
+
+    $row = [
+      'dm_bieumau_id' => $id,
+      'bieumau_ma' => '06/BV3',
+      'bieumau_ten' => 'Kết quả X Quang',
+      'bieumau_diengiai' => '',
+      'bieumau_url' => '',
+      'bieumau_component' => 'BV03_06_Page',
+      
+      'log_ngay_tao' => date('Y-m-d H:i:s'),
+      'log_ngay_capnhat' => null,
+      'log_ngay_xoa' => null,
+      'log_nguoi_tao_id' => 1,
+      'log_nguoi_capnhat_id' => null,
+      'log_nguoi_xoa_id' => null,
+    ];
+    array_push($list, $row);
+    $id++;
+
+    $row = [
+      'dm_bieumau_id' => $id,
+      'bieumau_ma' => '07/BV3',
+      'bieumau_ten' => 'Kết quả Siêu âm',
+      'bieumau_diengiai' => '',
+      'bieumau_url' => '',
+      'bieumau_component' => 'BV03_07_Page',
+      
+      'log_ngay_tao' => date('Y-m-d H:i:s'),
+      'log_ngay_capnhat' => null,
+      'log_ngay_xoa' => null,
+      'log_nguoi_tao_id' => 1,
+      'log_nguoi_capnhat_id' => null,
+      'log_nguoi_xoa_id' => null,
+    ];
+    array_push($list, $row);
+   
+    $id++;
+    $row = [
+      'dm_bieumau_id' => $id,
+      'bieumau_ma' => '08/BV3',
+      'bieumau_ten' => 'Kết quả Nội soi',
+      'bieumau_diengiai' => '',
+      'bieumau_url' => '',
+      'bieumau_component' => 'BV03_08_Page',
+      
+      'log_ngay_tao' => date('Y-m-d H:i:s'),
+      'log_ngay_capnhat' => null,
+      'log_ngay_xoa' => null,
+      'log_nguoi_tao_id' => 1,
+      'log_nguoi_capnhat_id' => null,
+      'log_nguoi_xoa_id' => null,
+    ];
+    array_push($list, $row);
+    $id++;
+
+    $id++;
+    $row = [
+      'dm_bieumau_id' => $id,
+      'bieumau_ma' => '09/BV3',
+      'bieumau_ten' => 'Kết quả Xét nghiệm',
+      'bieumau_diengiai' => '',
+      'bieumau_url' => '',
+      'bieumau_component' => 'BV03_09_Page',
+      
+      'log_ngay_tao' => date('Y-m-d H:i:s'),
+      'log_ngay_capnhat' => null,
+      'log_ngay_xoa' => null,
+      'log_nguoi_tao_id' => 1,
+      'log_nguoi_capnhat_id' => null,
+      'log_nguoi_xoa_id' => null,
+    ];
+    array_push($list, $row);
+    $id++;
+
     // Insert vào database
     DB::table('dm_bieumau')->insert($list);
   }
